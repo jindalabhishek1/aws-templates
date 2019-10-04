@@ -1,0 +1,18 @@
+
+AWSTemplateFormatVersion: "2010-09-09"
+Description: EC2
+Resources:
+  MyEC2Instance: #An inline comment
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: "ami-0badcc5b522737046" #Another comment -- This is a Linux AMI
+      InstanceType: t2.micro
+      KeyName: jindal-ext
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/sdm
+          Ebs:
+            VolumeType: io1
+            Iops: 200
+            DeleteOnTermination: true
+            VolumeSize: 20
